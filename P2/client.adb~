@@ -1,0 +1,107 @@
+with Lower_Layer_UDP;
+with Ada.Strings.Unbounded;
+with Ada.Text_IO;
+with Ada.Exceptions;
+with Ada.Command_Line;
+
+procedure Client is
+   package LLU renames Lower_Layer_UDP;
+   package ASU renames Ada.Strings.Unbounded;
+	package ACL renames Ada.Command_Line;
+	package ATI renames Ada.Text_IO;
+	
+	type mess is  (Int,Pal);
+	
+   Server_EP: LLU.End_Point_Type;
+   Client_EP: LLU.End_Point_Type;
+   Buffer:    aliased LLU.Buffer_Type(1024);
+   Request:   ASU.Unbounded_String;
+   Reply:     ASU.Unbounded_String;
+   Expired : Boolean;
+	Port: Integer;
+	Maquina_Server: ASU.Unbounded_String;
+	Nombre: ASU.Unbounded_String;
+	IP: ASU.Unbounded_String;
+	Opcion: Integer:= 0;
+	Num: Integer:= 0;
+	Salida: Boolean:= False;
+	Message: mess;
+
+begin
+	
+	Maquina_Server:= ASU.To_Unbounded_String(ACL.Argument(1));
+	Port:= Integer'Value(ACL.Argument(2));
+	IP:= ASU.To_Unbounded_String(LLU.To_IP(ASU.To_String(Maquina_Server)));
+   -- Construye el End_Point en el que está atado el servidor
+   Server_EP := LLU.Build(ASU.To_String(IP), Port);
+
+   -- Construye un End_Point libre cualquiera y se ata a él
+   LLU.Bind_Any(Client_EP);
+
+   -- reinicializa el buffer para empezar a utilizarlo
+   LLU.Reset(Buffer);
+
+   -- introduce el End_Point del cliente en el Buffer
+   -- para que el servidor sepa dónde responder
+
+	loop
+		ATI.New_Line;
+		ATI.Put_Line("Opciones");
+		ATI.Put_Line("========");
+		ATI.Put_Line("1.Introducir Entero");
+		ATI.Put_Line("2.Introducir Palabra");
+		ATI.Put_Line("3.Salir");
+		ATI.New_Line;
+		ATI.Put("Opcion: ");
+		Opcion:= Integer'Value(ATI.Get_Line);
+		if Opcion = 1 then
+			ATI.Put("Dame un numero => ");
+			Num:= Integer'Value(ATI.Get_Line);
+			mess'Output(Buffer'Access,Int);
+   		LLU.End_Point_Type'Output(Buffer'Access, Client_EP);
+			Integer'Output(Buffer'Access,Num);
+			LLU.Send(Server_EP, Buffer'Access);
+			LLU.Reset(Buffer);
+			LLU.Receive(Client_EP,Buffer'Access,2.0,Expired);
+			Message:= mess'Input(Buffer'Access);
+			Num:= Integer'Input(Buffer'Access);
+			ATI.Put_Line("El doble del numero es " & Integer'Image(Num) );	
+		elsif Opcion = 2 then
+			ATI.Put("Introduce una cadena caracteres: ");
+ 			Request := ASU.To_Unbounded_String(ATI.Get_Line);
+			mess'Output(Buffer'Access,Pal);
+   		LLU.End_Point_Type'Output(Buffer'Access, Client_EP);
+			ASU.Unbounded_String'Output(Buffer'Access, Request);
+			LLU.Send(Server_EP, Buffer'Access);
+			LLU.Reset(Buffer);
+			LLU.Receive(Client_EP,Buffer'Access,2.0,Expired);
+			Message:= mess'Input(Buffer'Access);
+			Num:= Integer'Input(Buffer'Access);
+			ATI.Put_Line("La longitud de tu cadena es " & Integer'Image(Num));
+		else
+			Salida:= True;
+		end if;
+			
+	exit when Salida = True or Expired = True;
+	end loop;
+
+
+
+   if Expired then
+      ATI.Put_Line ("Plazo expirado");
+		
+      --Reply := ASU.Unbounded_String'Input(Buffer'Access);
+      --ATI.Put("Respuesta: ");
+      --ATI.Put_Line(ASU.To_String(Reply));
+   end if;
+
+   LLU.Finalize;
+
+exception
+   when Ex:others =>
+      ATI.Put_Line ("Excepción imprevista: " &
+                            Ada.Exceptions.Exception_Name(Ex) & " en: " &
+                            Ada.Exceptions.Exception_Message(Ex));
+      LLU.Finalize;
+
+end Client;

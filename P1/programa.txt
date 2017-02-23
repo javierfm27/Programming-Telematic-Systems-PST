@@ -1,0 +1,80 @@
+	if L = True then
+		WL.Print_All(Words);
+		WL.Max_Word(Words,Palabra,X);
+		ATI.Put_Line("The most frequent word: |" & ASU.To_String(Palabra) & "| - " & Natural'Image(X));
+	elsif I = True then
+		loop
+			ATI.New_Line;
+			ATI.New_Line;
+			ATI.Put_Line("Options");
+			ATI.Put_Line("=======");
+			ATI.Put_Line("1 Add word");
+			ATI.Put_Line("2 Delete word");
+			ATI.Put_Line("3 Search word");
+			ATI.Put_Line("4 Show all words");		
+			ATI.Put_Line("5 Quit");
+			ATI.New_Line;
+			ATI.New_Line;
+			ATI.Put("Your option? ");
+			X:= Integer'Value(ATI.Get_Line);
+			if X = 1 then
+				ATI.Put("Word? ");
+				Palabra:= ASU.To_Unbounded_String(ATI.Get_Line);
+				WL.Add_Word(Words,Palabra);
+			elsif X = 2 then
+				ATI.Put("Word? ");
+				Palabra:= ASU.To_Unbounded_String(ATI.Get_Line);
+				WL.Delete_Word(Words,Palabra);
+			elsif X = 3 then
+				ATI.Put("Word? ");
+				Palabra:= ASU.To_Unbounded_String(ATI.Get_Line);
+				WL.Search_Word(Words,Palabra,Count);
+				ATI.Put("|" & ASU.To_String(Palabra) & "| - " & Natural'Image(Count));
+			elsif X = 4 then
+				WL.Print_All(Words);
+			end if;
+		exit when X = 5;
+		end loop;
+		WL.Max_Word(Words,Palabra,X);
+		ATI.Put_Line("The most frequent word: |" & ASU.To_String(Palabra) & "| - " & Natural'Image(X));
+	elsif I = True and L = True  then
+		WL.Print_All(Words);
+		ATI.Put_Line("Entra por aqui pero no por el bucle");
+		loop
+			ATI.New_Line;
+			ATI.New_Line;
+			ATI.Put_Line("Options");
+			ATI.Put_Line("=======");
+			ATI.Put_Line("1 Add word");
+			ATI.Put_Line("2 Delete word");
+			ATI.Put_Line("3 Search word");
+			ATI.Put_Line("4 Show all words");		
+			ATI.Put_Line("5 Quit");
+			ATI.New_Line;
+			ATI.New_Line;
+			ATI.Put("Your option? ");
+			X:= Integer'Value(ATI.Get_Line);
+			if X = 1 then
+				ATI.Put("Word? ");
+				Palabra:= ASU.To_Unbounded_String(ATI.Get_Line);
+				WL.Add_Word(Words,Palabra);
+			elsif X = 2 then
+				ATI.Put("Word? ");
+				Palabra:= ASU.To_Unbounded_String(ATI.Get_Line);
+				WL.Delete_Word(Words,Palabra);
+			elsif X = 3 then
+				ATI.Put("Word? ");
+				Palabra:= ASU.To_Unbounded_String(ATI.Get_Line);
+				WL.Search_Word(Words,Palabra,Count);
+				ATI.Put("|" & ASU.To_String(Palabra) & "| - " & Natural'Image(Count));
+			elsif X = 4 then
+				WL.Print_All(Words);
+			end if;
+		exit when X = 5;
+		end loop;
+		WL.Max_Word(Words,Palabra,X);
+		ATI.Put_Line("The most frequent word: |" & ASU.To_String(Palabra) & "| - " & Natural'Image(X));
+	else
+		WL.Max_Word(Words,Palabra,X);
+		ATI.Put_Line("The most frequent word: |" & ASU.To_String(Palabra) & "| - " & Natural'Image(X));
+	end if;

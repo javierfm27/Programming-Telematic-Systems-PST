@@ -1,0 +1,104 @@
+V "GNAT Lib v4.6"
+P SS ZX
+R nnnnnnnnnnvnnnnnnnvnnvnnnvvnnnnnnnvnnnnnnvnnvnnnnnnnnnnnnnvnnnnnnnnnnnnnnnnnnnnn
+
+U comandos%b		comandos.adb		37ea05c9 NE OO PK IL
+W ada.exceptions%s	a-except.adb		a-except.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+W system%s		system.ads		system.ali
+W system.exception_table%s  s-exctab.adb	s-exctab.ali
+W system.finalization_implementation%s  s-finimp.adb  s-finimp.ali
+W system.finalization_root%s  s-finroo.adb	s-finroo.ali
+W system.parameters%s	s-parame.adb		s-parame.ali
+W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+W system.soft_links%s	s-soflin.adb		s-soflin.ali
+W system.standard_library%s  s-stalib.adb	s-stalib.ali
+
+U comandos%s		comandos.ads		03dc8e22 EE NE OO PK IL
+W ada%s			ada.ads			ada.ali
+W ada.command_line%s	a-comlin.adb		a-comlin.ali
+W ada.exceptions%s	a-except.adb		a-except.ali
+W ada.io_exceptions%s	a-ioexce.ads		a-ioexce.ali
+W ada.strings%s		a-string.ads		a-string.ali
+W ada.strings.unbounded%s  a-strunb.adb		a-strunb.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W fichero%s		fichero.adb		fichero.ali
+
+D ada.ads		20070406091342 3ffc8e18
+D a-charac.ads		20070912115821 2d3ec45b
+D a-chlat1.ads		20070912115821 2825df20
+D a-comlin.ads		20100623092347 e0accaa5
+D a-except.ads		20090727140100 0c711ac9
+D a-finali.ads		20090409150019 e5e85fa4
+D a-filico.ads		20090409150019 872dc219
+D a-ioexce.ads		20091130110856 8b9de6cd
+D a-stream.ads		20090409150019 2ca4ee37
+D a-string.ads		20070406091342 90ac6797
+D a-strmap.ads		20090409150019 9cb836fb
+D a-strunb.ads		20101220072657 e684739b
+D a-tags.ads		20101021101406 c7695348
+D a-textio.ads		20091028140912 386df5d4
+D a-unccon.ads		20070406091342 f9eb8f06
+D comandos.ads		20151001075344 70936eaa
+D comandos.adb		20151005070612 47796b63
+D fichero.ads		20151001073513 cae65066
+D interfac.ads		20090409150019 f77d8799
+D i-cstrea.ads		20100622165701 1bd72c32
+D system.ads		20140416172229 23e1f70b
+D s-crtl.ads		20100617122610 ac77b159
+D s-exctab.ads		20090417131547 66e51330
+D s-ficobl.ads		20100909103250 443b9d66
+D s-finimp.ads		20090409150019 46853fe8
+D s-finroo.ads		20090409150019 dbb860c9
+D s-parame.ads		20091130110856 9c5d83fa
+D s-secsta.ads		20090707124243 eea35a36
+D s-soflin.ads		20090729085153 9414c974
+D s-stache.ads		20090417130712 596fc1b4
+D s-stalib.ads		20101021102512 c4241c00
+D s-stoele.ads		20090417130712 facd7d98
+D s-stoele.adb		20100617152355 afc5dc80
+D s-stratt.ads		20100909123135 aedef97e
+D s-traent.ads		20090417130712 5221ee41
+D s-unstyp.ads		20090409150019 6ae15c76
+D s-wchcon.ads		20090417130712 bfeb2e3d
+X 1 ada.ads
+16K9*Ada 19e8 16|1r6 2r6 3r6 4r6 5r6 10r29 11r29 12r29
+X 4 a-comlin.ads
+38K13*Command_Line 139e21 16|2w10 10r33
+41V13*Argument_Count{natural} 17|12s24 15s27 29s27
+48V13*Argument{string} 17|13s65 16s63 17s65 30s63 31s64 32s65
+X 5 a-except.ads
+55K13*Exceptions 370e19 16|4w10
+X 8 a-ioexce.ads
+18K13*IO_Exceptions 30e22 16|5w10
+X 10 a-string.ads
+16K13*Strings 35e16 16|3r10 12r33
+X 12 a-strunb.ads
+77K21*Unbounded 490e26 16|3w18 12r41
+80R9*Unbounded_String 474e14 16|13r22 17|5r30 6r31 7r32
+95V13*To_Unbounded_String{80R9} 17|13s41 16s39 17s41 21s46 30s39 31s40 32s41
+167V13*"="{boolean}<6|64p24> 17|21s40
+171V13*"="{boolean} 17|18s36 33s36 33s54 38s37 38s56
+X 14 a-textio.ads
+49K13*Text_IO 472e16 16|1w10 11r33
+52P9*File_Type(370R9) 16|16r45 17|4r45
+264U14*Put_Line 17|54s37
+X 16 comandos.ads
+8K9*comandos 18l5 18e13 17|1b14 62l5 62t13
+10K17*ACL=10:33 17|12r20 13r61 15r23 16r59 17r61 29r23 30r59 31r60 32r61
+11K17*ATI=11:33 16r41 17|4r41 54r33
+12K17*ASU=12:41 13r18 17|5r26 6r27 7r28 13r37 16r35 17r37 21r42 30r35 31r36
+. 32r37
+16U19*mostrar 16=28 16<55 16<71 17|4b19 56l13 56t20
+16p28 File{14|52P9} 17|4b28 14m39 27m39 44m39
+16b55 C1{boolean} 17|4b55 19m33 22m33 34m33
+16b71 C2{boolean} 17|4b72 20m33 23m33 39m33
+X 17 comandos.adb
+5r17 Entrada{12|80R9} 16m25 18r28 21r32 30m25 33r28 33r46
+6r17 Entrada2{12|80R9} 31m25 38r28 38r47
+7r17 File_Name{12|80R9} 13m25 14r44 17m25 27r44 32m25 44r44
+8X17 Command_Error 25r39 36r39 41r39 53r30
+X 18 fichero.ads
+7K9*fichero 16|6w6 17|14r25 27r25 44r25 18|17e12
+13U19*Abrir 17|14s33 27s33 44s33
+

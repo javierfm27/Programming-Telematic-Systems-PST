@@ -1,0 +1,13 @@
+package body lista_words is 
+
+	procedure enlazar_words (L: in ASU.Unbounded_String; Lista: out Word_List_Type) is
+
+
+	begin
+	
+	ATI.Put_Line("Hola");	
+			
+	end enlazar_words;
+
+
+end lista_words;

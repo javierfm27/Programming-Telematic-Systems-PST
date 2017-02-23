@@ -1,0 +1,19 @@
+V "GNAT Lib v4.6"
+P ZX
+R nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
+
+U chat_message%s	chat_message.ads	f52f7dac NE OO PK IL
+
+D chat_message.ads	20151020112942 f52f7dac
+D system.ads		20140416172229 23e1f70b
+X 1 chat_message.ads
+1K9*chat_message 5l5 5e17
+3E14*Message_Type 3e104
+3n31*Init{3E14}
+3n37*Writer{3E14}
+3n45*Server{3E14}
+3n53*Collection_Request{3E14}
+3n73*Collection_Data{3E14}
+3n90*Ban{3E14}
+3n95*Shutdown{3E14}
+

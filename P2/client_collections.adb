@@ -1,0 +1,208 @@
+package body client_collections is
+
+	procedure Add_Client (Collection: in out Collection_Type;EP: in LLU.End_Point_Type;	Nick: in ASU.Unbounded_String; Unique: in Boolean) is
+
+	P_Aux: Cell_A; --Necesita ser un Cell_A ya que Collection Type solo es para apuntar y tener cuenta de la gente que hay
+	Igual: Boolean:= False;
+	
+	begin
+	
+	P_Aux:= Collection.P_First;
+	if Unique = True then
+		if Collection.P_First = null then
+			Collection.P_First:= new Cell'(EP,Nick,null);
+			Collection.Total:= Collection.Total + 1;
+		else
+			while P_Aux /= null loop
+				if P_Aux.Nick = Nick then
+					Igual:= True;
+					P_Aux:= null;			
+				else
+					P_Aux:= P_Aux.Next;
+				end if;
+			end loop;
+			P_Aux:= Collection.P_First;
+			while P_Aux.Next /= null loop
+				P_Aux:= P_Aux.Next;
+			end loop;
+			if Igual = True then
+				raise Client_Collection_Error;
+			else 
+				P_Aux.Next:= new Cell'(EP,Nick,null);
+				Collection.Total:= Collection.Total + 1;
+			end if;
+		end if;
+		ATI.Put_Line("INIT received from " & ASU.To_String(Nick));			
+	else
+		if Collection.P_First = null then
+			Collection.P_First:= new Cell'(EP,Nick,null);
+			Collection.Total:= Collection.Total + 1;
+		else
+			while P_Aux.Next /= null loop
+				P_Aux:= P_Aux.Next;
+			end loop;
+			P_Aux.Next:= new Cell'(EP,Nick,null);
+			Collection.Total:= Collection.Total + 1;
+		end if;
+		ATI.Put_Line("INIT received from " & ASU.To_String(Nick));		
+	end if;
+	
+	exception
+		when Client_Collection_Error =>
+			ATI.Put_Line("INIT received from " & ASU.To_String(Nick) & ". IGNORED, nick already used");
+
+	end Add_Client;
+
+
+	procedure Delete_Client (Collection: in out Collection_Type; Nick: in ASU.Unbounded_String) is
+	P_Aux: Cell_A;
+	P_Aux2: Cell_A;
+	Encontrado: Boolean:= False;
+	Borrado: Boolean:= False;
+	procedure Free is new Ada.Unchecked_Deallocation (Cell, Cell_A );
+	
+	begin
+	P_Aux:= Collection.P_First;
+	if Collection.Total = 0 then
+		raise Client_Collection_Error;
+	elsif Collection.Total = 1 then
+		if P_Aux.Nick = Nick then
+			Free(P_Aux);
+			Collection.P_First:= null;
+			Borrado:= True;
+			ATI.Put_Line("BAN received for " & ASU.To_String(Nick));		
+		else
+			raise Client_Collection_Error;
+		end if;
+	else
+		if P_Aux.Nick = Nick then
+			Collection.P_First:= P_Aux.Next;
+			Free(P_Aux);
+			Borrado:= True;
+			ATI.Put_Line("BAN received for " & ASU.To_String(Nick));	
+		else
+			P_Aux:= P_Aux.Next;
+			loop
+				if P_Aux.Nick = Nick then
+					Encontrado:= True;
+				else
+					P_Aux:= P_Aux.Next;
+				end if;		
+			exit when Encontrado = True;
+			end loop;
+		end if;
+	end if;
+	
+	P_Aux2:= Collection.P_First;
+	if Borrado = False then
+		if Encontrado = True then 
+			loop
+				if P_Aux2.Next.Nick = P_Aux.Nick then
+					null;
+				else 
+					P_Aux2:= P_Aux2.Next;
+				end if;			
+			exit when P_Aux2.Next.Nick = P_Aux.Nick;
+			end loop;
+			P_Aux2.Next:= P_Aux.Next;
+			P_Aux:= null;
+			P_Aux2:= null;
+			ATI.Put_Line("BAN received for " & ASU.To_String(Nick));	
+		else
+			ATI.Put_Line("ERROR DE PASE");
+			raise Client_Collection_Error;
+		end if;
+	else
+		null;
+	end if;	
+	exception
+		when Client_Collection_Error =>
+			ATI.Put_Line("BAN received for " & ASU.To_String(Nick) & ". IGNORED, nick not found");
+	end Delete_Client;
+
+
+	function Search_Client (Collection: in Collection_Type; EP: in LLU.End_Point_Type) return ASU.Unbounded_String is
+	P_Aux: Cell_A;
+	P_Aux2: Cell_A;
+	Nick: ASU.Unbounded_String;
+	Encontrado: Boolean:= False;	
+		
+	begin
+	P_Aux:= Collection.P_First;
+	while P_Aux /= null loop
+		if P_Aux.Client_EP = EP then
+			Encontrado:= True;
+			P_Aux2:= P_Aux;
+			P_Aux:= null;
+		else
+			P_Aux:= P_Aux.Next;
+		end if;
+	end loop;
+
+	if Encontrado = True then 
+		Nick:= P_Aux2.Nick;
+		return Nick;
+	else
+		raise Client_Collection_Error;
+	end if;
+
+	exception 
+		when Client_Collection_Error =>
+			Nick:= ASU.To_Unbounded_String("");
+			return Nick;
+
+
+	end Search_Client;
+
+
+
+
+
+
+	procedure Send_To_All (Collection: in Collection_Type; P_Buffer: access LLU.Buffer_Type) is
+	P_Aux: Cell_A;
+	begin
+	P_Aux:= Collection.P_First;
+		if P_Aux = null then
+			null;
+		else
+			while P_Aux /= null loop
+				LLU.Send(P_Aux.Client_EP,P_Buffer);
+				P_Aux:= P_Aux.Next;
+			end loop;
+		end if;
+	end Send_To_All;
+
+
+	function Collection_Image(Collection: in Collection_Type) return String is
+	P_Aux: Cell_A;
+	Linea: ASU.Unbounded_String;
+	IP: ASU.Unbounded_String;
+	Port: ASU.Unbounded_String;
+	Final: ASU.Unbounded_String:= ASU.To_Unbounded_String("");
+	Caracter: Integer;
+	begin
+		P_Aux:= Collection.P_First;
+		while P_Aux/= null loop
+			Linea:= ASU.To_Unbounded_String(LLU.Image(P_Aux.Client_EP));
+			Caracter:= ASU.Index(Linea,":");
+			IP:= ASU.Tail(Linea,ASU.Length(Linea) - Caracter);
+			Caracter:= ASU.Index(IP, " ");
+			IP:= ASU.Tail(Linea,ASU.Length(IP) - Caracter);
+			Caracter:= ASU.Index(IP, ":");
+			Port:= ASU.Tail(IP,(ASU.Length(IP) - 2) - Caracter);				
+			IP:= ASU.Head(IP,Caracter - 7);
+			Linea:= IP  & ASU.To_Unbounded_String(":") & ASU.To_String(Port) & " " & P_Aux.Nick;
+			if ASU.To_String(Final) = "" then
+				Final:= Linea;
+			else
+				Final:= Final & ASCII.LF & Linea;
+			end if;		
+			P_Aux:= P_Aux.Next;
+		end loop;
+			return ASU.To_String(Final);
+	end Collection_Image;
+
+
+
+end client_collections;

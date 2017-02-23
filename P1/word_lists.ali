@@ -1,0 +1,163 @@
+V "GNAT Lib v4.6"
+P SS ZX
+R nnnvnnnnnnvnnnnnnnvnnvnnnvvnnnnvnnvnnnnnnvnnvnnnnnnnnnnvnnvnnnnvnnnnnnnnnnnnnnnn
+
+U word_lists%b		word_lists.adb		1b6f2b1b NE OO PK IL
+W ada.exceptions%s	a-except.adb		a-except.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+W system%s		system.ads		system.ali
+W system.concat_3%s	s-conca3.adb		s-conca3.ali
+W system.finalization_implementation%s  s-finimp.adb  s-finimp.ali
+W system.finalization_root%s  s-finroo.adb	s-finroo.ali
+W system.img_int%s	s-imgint.adb		s-imgint.ali
+W system.parameters%s	s-parame.adb		s-parame.ali
+W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+W system.soft_links%s	s-soflin.adb		s-soflin.ali
+W system.standard_library%s  s-stalib.adb	s-stalib.ali
+
+U word_lists%s		word_lists.ads		a7fc4a5e EE OO PK
+W ada%s			ada.ads			ada.ali
+W ada.characters%s	a-charac.ads		a-charac.ali
+W ada.characters.handling%s  a-chahan.adb	a-chahan.ali
+W ada.exceptions%s	a-except.adb		a-except.ali
+W ada.finalization.list_controller%s  a-filico.adb  a-filico.ali
+W ada.strings%s		a-string.ads		a-string.ali
+W ada.strings.maps%s	a-strmap.adb		a-strmap.ali
+W ada.strings.unbounded%s  a-strunb.adb		a-strunb.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W ada.unchecked_deallocation%s
+W system%s		system.ads		system.ali
+W system.exception_table%s  s-exctab.adb	s-exctab.ali
+W system.finalization_implementation%s  s-finimp.adb  s-finimp.ali
+W system.finalization_root%s  s-finroo.adb	s-finroo.ali
+W system.parameters%s	s-parame.adb		s-parame.ali
+W system.soft_links%s	s-soflin.adb		s-soflin.ali
+W system.standard_library%s  s-stalib.adb	s-stalib.ali
+
+D ada.ads		20070406091342 3ffc8e18
+D a-charac.ads		20070912115821 2d3ec45b
+D a-chahan.ads		20100810135053 1d381dcd
+D a-chlat1.ads		20070912115821 2825df20
+D a-except.ads		20090727140100 0c711ac9
+D a-finali.ads		20090409150019 e5e85fa4
+D a-filico.ads		20090409150019 872dc219
+D a-ioexce.ads		20091130110856 8b9de6cd
+D a-stream.ads		20090409150019 2ca4ee37
+D a-string.ads		20070406091342 90ac6797
+D a-strmap.ads		20090409150019 9cb836fb
+D a-strunb.ads		20101220072657 e684739b
+D a-tags.ads		20101021101406 c7695348
+D a-textio.ads		20091028140912 386df5d4
+D a-unccon.ads		20070406091342 f9eb8f06
+D a-uncdea.ads		20070406091342 f15a5ed1
+D interfac.ads		20090409150019 f77d8799
+D i-cstrea.ads		20100622165701 1bd72c32
+D system.ads		20140416172229 23e1f70b
+D s-conca3.ads		20090420091404 762a026a
+D s-crtl.ads		20100617122610 ac77b159
+D s-exctab.ads		20090417131547 66e51330
+D s-ficobl.ads		20100909103250 443b9d66
+D s-finimp.ads		20090409150019 46853fe8
+D s-finroo.ads		20090409150019 dbb860c9
+D s-imgint.ads		20090409150019 02dbe0c2
+D s-parame.ads		20091130110856 9c5d83fa
+D s-secsta.ads		20090707124243 eea35a36
+D s-soflin.ads		20090729085153 9414c974
+D s-stache.ads		20090417130712 596fc1b4
+D s-stalib.ads		20101021102512 c4241c00
+D s-stoele.ads		20090417130712 facd7d98
+D s-stoele.adb		20100617152355 afc5dc80
+D s-stratt.ads		20100909123135 aedef97e
+D s-traent.ads		20090417130712 5221ee41
+D s-unstyp.ads		20090409150019 6ae15c76
+D s-wchcon.ads		20090417130712 bfeb2e3d
+D word_lists.ads	20151005082118 09cfb9f6
+D word_lists.adb	20151006073633 12a092ed
+X 1 ada.ads
+16K9*Ada 19e8 38|1r6 2r6 3r6 4r6 5r6 9r29 10r29 11r29 12r29 22r31
+X 2 a-charac.ads
+16K13*Characters 18e19 38|4r10 11r33
+X 3 a-chahan.ads
+36K24*Handling 150e28 38|4w21 11r44
+66V13*To_Lower{string} 39|13s47 65s47 121s47
+X 10 a-string.ads
+16K13*Strings 35e16 38|1r10 5r10 9r33 12r33
+X 11 a-strmap.ads
+38K21*Maps 412e21 38|5w18 12r41
+X 12 a-strunb.ads
+77K21*Unbounded 490e26 38|1w18 9r41
+80R9*Unbounded_String 474e14 38|17r27 27r46 30r46 33r46 37r47 39|3r71 8r22
+. 56r74 60r22 117r70 119r22 144r68
+95V13*To_Unbounded_String{80R9} 39|13s23 65s23 121s23 173s36
+101V13*To_String{string} 39|13s60 32s32 32s61 49s37 65s60 66s37 66s64 72s19
+. 72s46 77s42 79s40 79s69 83s40 83s73 89s43 89s76 106s32 121s60 128s32 128s60
+. 198s37
+X 14 a-textio.ads
+49K13*Text_IO 472e16 38|2w10 10r33
+243U14*Put 39|197s29 198s29 199s29 200s29
+264U14*Put_Line 39|49s13 70s21 77s29 106s13 110s29 172s29 194s21 201s29 208s29
+X 16 a-uncdea.ads
+20u15*Unchecked_Deallocation 38|3w10 22r35
+X 38 word_lists.ads
+7K9*Word_Lists 43l5 43e15 39|1b14 243l5 243t15
+9K17*ASU=9:41 17r23 27r42 30r42 33r42 37r43 39|3r67 8r18 13r19 13r56 32r28
+. 32r57 49r33 56r70 60r18 65r19 65r56 66r33 66r60 72r15 72r42 77r38 79r36
+. 79r65 83r36 83r69 89r39 89r72 106r28 117r66 119r18 121r19 121r56 128r28
+. 128r56 144r64 173r32 198r33
+10K17*ATI=10:33 39|49r9 70r17 77r25 106r9 110r25 172r25 194r17 197r25 198r25
+. 199r25 200r25 201r25 208r25
+11K17*ACH=11:44 39|13r43 65r43 121r43
+12K17*ASM=12:41
+14R14*Cell 15r39 16c14 20e19 22r59 39|27r28 43r38
+15P14*Word_List_Type(14R14) 19r23 22r65 26r42 29r45 32r41 36r38 39r39 41r45
+. 39|3r42 4r16 5r17 56r45 57r16 58r17 117r41 118r16 144r38 145r16 146r17
+. 187r39 189r16 212r45 213r16 214r17
+17r17*Word{12|80R9} 39|32r49 66r52 72r34 77r58 79r56 83r61 89r64 128r48 153r29
+. 166r30 198r53
+18i17*Count{natural} 39|33m40 33r55 129r47 154r30 158r34 158r50 167r31 201r58
+19p17*Next{15P14} 39|17r29 20r39 36r49 44m31 66r17 73r29 78r34 83r56 85r56
+. 86m47 86r61 89r59 89r105 89r110 91r56 92m47 96r55 132r47 152r20 156r31
+. 159r49 162r49 202r39 222r34 223r45
+22U19*Free[16|20] 39|67s17 74s17 87s41 93s41 224s33 233s25
+24X9*Word_List_Error 39|71r23 80r47 109r22 151r23 171r22
+26U19*Add_Word 26=29 27>33 39|3b19 51l13 51t21
+26p29 List{15P14} 39|3b29 12r17 15r20 26r12 27m17 29r26
+27r33 Word{12|80R9} 39|3b58 13r70
+29U19*Delete_Word 29=32 30>33 39|56b19 112l13 112t24
+29p32 List{15P14} 39|56b32 63r17 64r18 66r12 66r47 67m22 69r15 72r29 73m17
+. 73r24
+30r33 Word{12|80R9} 39|56b61 65r70
+32U19*Search_Word 32>32 33>33 34<33 39|117b19 137l13 137t24
+32p32 List{15P14} 39|117b32 122r17 124r12
+33r33 Word{12|80R9} 39|117b57 121r70
+34i33 Count{natural} 39|117b88 123m9 125m17 129m33
+36U19*Max_Word 36>29 37<33 38<33 39|144b19 176l13 176t21
+36p29 List{15P14} 39|144b29 149r17 150r12 152r15 153r24 154r25 156r26
+37r33 Word{12|80R9} 39|144b54 153m17 166m17 173m25
+38i33 Count{natural} 39|144b86 154m17 167m17 174m25
+39U19*Print_All 39>30 39|187b19 209l13 209t22
+39p30 List{15P14} 39|187b30 192r17 193r12
+41U19*Delete_List 41=32 39|212b19 236l13 236t24
+41p32 List{15P14} 39|212b32 217r17 218r12 223m33 223r40 225r41 233m30
+X 39 word_lists.adb
+4p9 P_Aux{38|15P14} 12m9 17r23 20m25 20r33 44r25 45m25
+5p9 P_Aux2{38|15P14} 29m17 32r42 33r33 33r48 36m33 36r42 38r48 40m17 43m25
+. 44r38 45r33 46m25
+6b9 Encontrado{boolean} 30m17 34m33 38r27 42r20
+7b9 Ultimo{boolean} 16m25 18m25 22r19
+8r9 Palabra{12|80R9} 13m9 27r34 32r71 43r44 49r47
+57p9 P_Aux{38|15P14} 63m9 68m17 74m22 77r52 78r28 79r50 83r50 85r50 86r41
+. 88m41 89r53 89r99 91r50 92r41 94m41 96m41 96r49 99r27
+58p9 P_Aux2{38|15P14} 64m9 85m41 86r54 87m46 91m41 93m46
+59b9 Encontrado{boolean} 84m41 90m41 99r43
+60r9 Palabra{12|80R9} 65m9 66r74 72r56 79r79 83r83 89r86 106r42
+118p9 P_Aux{38|15P14} 122m9 127r23 128r42 129r41 130m33 132m33 132r41
+119r9 Palabra{12|80R9} 121m9 128r70
+145p9 P_Aux{38|15P14} 149m9 158r28 161m33 166r24 167r25
+146p9 P_Aux2{38|15P14} 156m17 158r43 159m33 159r42 161r41 162m33 162r42 164r27
+189p9 P_Aux{38|15P14} 192m9 196r23 198r47 201r52 202m25 202r33
+213p9 P_Aux{38|15P14} 217m9 222r28 224m38 225m33 232m25
+214p9 P_Aux2{38|15P14}
+215b9 Ultimo{boolean} 221r23 227m33 231r20
+
